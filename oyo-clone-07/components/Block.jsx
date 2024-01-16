@@ -4,11 +4,11 @@ const Block = ({ title, para }) => {
   return (
     <div className='w-60 h-full flex items-center px-3 border-r border-gray-200'>
       <Image
-        src={'/next.svg'}
+        src={'/suitcase.png'}
         alt='demo'
         width={200}
         height={200}
-        className='w-10 h-10 rounded-full mr-5'
+        className='w-7 h-7 rounded-full mr-5'
       />
       <div>
         <h3 className='font-bold'>{title}</h3>

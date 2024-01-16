@@ -21,7 +21,7 @@ const Header1 = () => {
         <Block title={'8055'} para={'Call us to book now'} />
         <div className='flex items-center px-3'>
           <Image
-            src={'/next.svg'}
+            src={'/user-interface.png'}
             alt='demo'
             width={200}
             height={200}
