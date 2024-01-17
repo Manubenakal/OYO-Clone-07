@@ -13,7 +13,6 @@ const Home = () => {
     <div>
       <Head>
         <title>OYO Clone</title>
-        <link rel='icon' href='/icon.png'></link>
       </Head>
       <Header1 />
       <Header2 />
