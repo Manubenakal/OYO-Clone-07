@@ -1,5 +1,12 @@
+import Hotel from '@/components/Hotel';
+
 const Hotels = () => {
-  return <div>hotels</div>;
+  return (
+    <div className=' my-5'>
+      <Hotel />
+      <Hotel />
+    </div>
+  );
 };
 
 export default Hotels;
