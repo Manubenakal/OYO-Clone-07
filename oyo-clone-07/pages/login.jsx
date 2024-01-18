@@ -1,7 +1,21 @@
+'use client';
+
 import Head from 'next/head';
 import Link from 'next/link';
+import { useState } from 'react';
 
 const Login = () => {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [login, setlogin] = useState(false);
+  const handleSignUp = () => {
+    console.log(name, email, password);
+  };
+  const handleLogin = () => {
+    setlogin(true);
+  };
+
   return (
     <div>
       <Head>
@@ -36,30 +50,41 @@ const Login = () => {
               <p className='font-bold text-lg mb-1'>
                 Please enter your phone number to continue
               </p>
-              <input
-                type='text'
-                placeholder='Enter your Name'
-                className='outline-none border my-3 border-black px-3 py-1 w-96 h-10'
-              />
+              {login ? (
+                ''
+              ) : (
+                <input
+                  type='text'
+                  placeholder='Enter your Name'
+                  className='outline-none border my-3 border-black px-3 py-1 w-96 h-10'
+                  onChange={(e) => setName(e.target.value)}
+                />
+              )}
               <input
                 type='email'
                 placeholder='Enter your Mail'
                 className='outline-none border my-3 border-black px-3 py-1 w-96 h-10'
+                onChange={(e) => setEmail(e.target.value)}
               />
               <input
                 type='password'
                 placeholder='Enter your Password'
                 className='outline-none border my-3 border-black px-3 py-1 w-96 h-10'
+                onChange={(e) => setPassword(e.target.value)}
               />
               <button
                 type='submit'
                 className='w-96 h-10 font-bold bg-red-500 hover:bg-red-600 hover:cursor-pointer text-white my-5 rounded-lg'
+                onClick={handleSignUp}
               >
                 Sign Up
               </button>
               <p className='my-1 text-xl'>
                 <span>Already have an account?</span>
-                <span className='ml-3 border-b-2 border-red-500 pb-1 hover:cursor-pointer hover:text-red-600 text-red-400'>
+                <span
+                  className='ml-3 border-b-2 border-red-500 pb-1 hover:cursor-pointer hover:text-red-600 text-red-400'
+                  onClick={handleLogin}
+                >
                   Login
                 </span>
               </p>

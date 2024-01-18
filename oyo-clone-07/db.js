@@ -1,13 +1,9 @@
 import mongoose from 'mongoose';
 
 const URI =
-  'mongodb+srv://manubenakal:kingceaser@M@cluster0.jlwrkoz.mongodb.net/OYO';
+  'mongodb+srv://manubenakal:kingceaser@cluster0.jlwrkoz.mongodb.net/oyo-clone-07';
 
 const connectDB = async () => {
-  await mongoose.connect(URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  });
-  console.log('DB Connected');
+  await mongoose.createConnection(URI);
 };
 export default connectDB;
