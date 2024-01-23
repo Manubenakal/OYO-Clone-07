@@ -7,7 +7,7 @@ const Header2 = () => {
       name: 'Hyderabad',
     },
     {
-      name: 'Chennai',
+      name: 'Madikeri',
     },
     {
       name: 'Kochi',

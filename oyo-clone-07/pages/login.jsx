@@ -3,17 +3,45 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import { useState } from 'react';
+import axios from 'axios';
+import Cookies from 'js-cookie';
+import { useRouter } from 'next/router';
 
 const Login = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [login, setlogin] = useState(false);
-  const handleSignUp = () => {
-    console.log(name, email, password);
+
+  const router = useRouter();
+
+  const handleSignUp = async () => {
+    const res = await axios.post('/api/users/register', {
+      name,
+      email,
+      password,
+    });
+    if (res?.data) {
+      Cookies.set('user', res.data.token, { expires: 7 });
+      alert(res.data.msg);
+      router.back();
+    }
   };
-  const handleLogin = () => {
-    setlogin(true);
+
+  const handleLogin = async () => {
+    const res = await axios.post('/api/users/login', {
+      email,
+      password,
+    });
+    if (res?.data) {
+      Cookies.set('user', res.data.token, { expires: 7 });
+      alert(res.data.msg);
+      router.back();
+    }
+  };
+
+  const handleToggle = () => {
+    setlogin(!login);
   };
 
   return (
@@ -75,17 +103,21 @@ const Login = () => {
               <button
                 type='submit'
                 className='w-96 h-10 font-bold bg-red-500 hover:bg-red-600 hover:cursor-pointer text-white my-5 rounded-lg'
-                onClick={handleSignUp}
+                onClick={login ? handleLogin : handleSignUp}
               >
-                Sign Up
+                {login ? 'Login' : 'Sign Up'}
               </button>
               <p className='my-1 text-xl'>
-                <span>Already have an account?</span>
+                <span>
+                  {login
+                    ? " Don't have an account"
+                    : 'Already have an account?'}
+                </span>
                 <span
                   className='ml-3 border-b-2 border-red-500 pb-1 hover:cursor-pointer hover:text-red-600 text-red-400'
-                  onClick={handleLogin}
+                  onClick={handleToggle}
                 >
-                  Login
+                  {login ? 'Sign Up ' : 'Login'}
                 </span>
               </p>
             </div>
