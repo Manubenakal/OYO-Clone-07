@@ -5,31 +5,39 @@ import Block from './Block';
 import Link from 'next/link';
 import Cookies from 'js-cookie';
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 const Header1 = () => {
-  let auth;
+  const [auth, setauth] = useState(false);
 
   useEffect(() => {
-    auth = Cookies.get('user');
-  }, []);
+    const key = Cookies.get('user');
+    if (key) {
+      setauth(true);
+      return;
+    }
+    setauth(false);
+  }, [auth]);
 
   const router = useRouter();
 
   const handleLogout = () => {
     Cookies.remove('user');
+    setauth(false);
     router.push('/');
   };
 
   return (
     <div className='flex justify-between border-b-2 border-gray-300 h-24 px-10 items-center'>
-      <Image
-        src={'/oyo-logo.png'}
-        alt='logo'
-        width={200}
-        height={200}
-        className='w-28 h-28 mr-7'
-      ></Image>
+      <Link href={'/'}>
+        <Image
+          src={'/oyo-logo.png'}
+          alt='logo'
+          width={200}
+          height={200}
+          className='w-28 h-28 mr-7'
+        ></Image>
+      </Link>
       <div className=' border-gray-300 h-full flex'>
         <Block title={'Become a member'} para={'Additional 10% off'} />
         <Block title={'OYO for business'} para={'Trusted by 5000 companies'} />
