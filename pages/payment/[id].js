@@ -37,7 +37,7 @@ const Payment = () => {
 
   return (
     <>
-      <Script src='http://checkout.razorpay.com/v1/checkout.js' />
+      <Script src='https://checkout.razorpay.com/v1/checkout.js' />
     </>
   );
 };
