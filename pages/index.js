@@ -22,6 +22,7 @@ const Home = () => {
           <Image
             src={'/banner1.avif'}
             alt='banner'
+            priority={true}
             width={200}
             height={200}
             className='h-60 w-full rounded-2xl'
@@ -31,6 +32,7 @@ const Home = () => {
           <Image
             src={'/banner2.avif'}
             alt='banner'
+            priority={true}
             width={200}
             height={200}
             className='h-35 w-full rounded-2xl'
