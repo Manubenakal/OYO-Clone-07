@@ -61,7 +61,7 @@ const Login = () => {
         <div className='flex justify-center w-9/12'>
           <div className='pt-20 text-white'>
             <p className='font-bold text-4xl text-justify'>
-              There's a smarter way to OYO around
+              There is a smarter way to OYO around
             </p>
             <p className='text-2xl text-justify mt-5'>
               Sign up with your phone number and get exclusive access to
